@@ -1,0 +1,52 @@
+@echo off
+echo ========================================
+echo  INSTALACAO SISTEMA ESCALA BOMBEIROS
+echo ========================================
+echo.
+
+REM Verificar se Node.js está instalado
+node --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo ❌ Node.js nao encontrado!
+    echo.
+    echo Por favor, instale o Node.js antes de continuar:
+    echo https://nodejs.org/
+    echo.
+    pause
+    exit /b 1
+)
+
+echo ✅ Node.js encontrado!
+node --version
+
+echo.
+echo 📦 Instalando dependencias...
+call npm install
+
+echo.
+echo 📁 Criando diretorios necessarios...
+if not exist "public" mkdir public
+if not exist "escalas" mkdir escalas
+
+echo.
+echo 📄 Movendo arquivo HTML para pasta public...
+REM Aqui você precisa mover o arquivo HTML que criei para a pasta public
+REM copy "sistema-bombeiros.html" "public\index.html"
+
+echo.
+echo ========================================
+echo ✅ INSTALACAO CONCLUIDA!
+echo ========================================
+echo.
+echo Para iniciar o servidor:
+echo   npm start
+echo.
+echo O sistema estará disponível em:
+echo   http://localhost:3000
+echo.
+echo Pressione qualquer tecla para iniciar agora...
+pause >nul
+
+echo.
+echo 🚀 Iniciando servidor...
+npm start
